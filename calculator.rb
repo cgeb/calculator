@@ -1,32 +1,34 @@
+def user_input(request)
+  puts request
+  gets.chomp
+end
+
 begin
-  puts "Please enter the first number:"
-  first_num = gets.chomp
+  first_num = user_input("Please enter the first number:")
   puts "The first number is #{first_num}"
 
-  puts "Please enter the second number:"
-  second_num = gets.chomp
+  second_num = user_input("Please enter the second number:")
   puts "The second number is #{second_num}"
 
   begin
-  puts "Choose the operation you would like to perform: Type 1 for addition, 2 for subtraction, 3 for multiplication, and 4 for division"
-  operation = gets.chomp
+  operation = user_input("Choose the operation you would like to perform: Type + for addition, - for subtraction, * for multiplication, and / for division")
   valid = true
-    if operation == "1"
+    if operation == "+"
       result = first_num.to_i + second_num.to_i
-    elsif operation == "2"
+    elsif operation == "-"
       result = first_num.to_i - second_num.to_i
-    elsif operation == "3"
+    elsif operation == "*"
       result = first_num.to_i * second_num.to_i
-    elsif operation == "4"
+    elsif operation == "/"
       result = first_num.to_f / second_num.to_f
     else
-      puts "Not a valid request."
+      puts "Not a valid operation."
       valid = false
     end
   end while valid == false
 
   puts "The result is #{result}"
-  puts "Type Y if you would like to continue using the calculator."
-  answer = gets.chomp
   
+  answer = user_input("Type Y if you would like to continue using the calculator.")
+
 end while answer == 'Y' || answer == 'y'
